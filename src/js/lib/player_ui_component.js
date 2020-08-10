@@ -16,6 +16,7 @@ module.exports = class PlayerUIComponent extends PlayerComponent {
       commentsContainer: this.$player.find('.vac-comments-container'), // outer container for all comments
       controlElements: this.$player.find('.vac-control'), // Each of multiple control elements in the control bar
       newCommentTextarea: this.$player.find('.vac-video-write-new textarea'), // Textarea for writing a new comment
+      newAnonymousCheckbox: this.$player.find('.vac-video-write-new #anonymous'), // Checkbox for anonymous comment
       timeline: this.$player.find('.vjs-progress-control'), // Timeline element
       markerCursorHelpText: this.$player.find('.vac-cursor-help-text'), // Help text that appears with 'click/drag..' on timeline
       controlBar: this.$player.find('.vjs-control-bar'), // Conrol bar wrapper for vjs

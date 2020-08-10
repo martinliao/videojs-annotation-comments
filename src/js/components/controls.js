@@ -128,6 +128,8 @@ module.exports = class Controls extends PlayerUIComponent {
     this.player.pause();
     this.setAddingUI();
     this.uiState.adding = true;
+    //this.render();
+    this.uiState.writingComment = true;
     this.render();
 
     // construct new range and create marker
@@ -153,9 +155,12 @@ module.exports = class Controls extends PlayerUIComponent {
   // User clicked to save a new annotation/comment during add new flow
   saveNew() {
     const comment = this.$UI.newCommentTextarea.val();
+    const anonymous = this.$UI.newAnonymousCheckbox.prop('checked');
+
     if (!comment) return; // empty comment - TODO add validation / err message
 
     const a = Annotation.newFromData(
+      anonymous,
       this.marker.range,
       this.selectableShape.shape,
       comment,

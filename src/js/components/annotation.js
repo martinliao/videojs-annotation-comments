@@ -12,7 +12,9 @@ const Shape = require('./shape');
 module.exports = class Annotation extends PlayerUIComponent {
   constructor(data, player) {
     super(player);
+debugger;
     this.id = data.id || this.componentId;
+    this.anonymous = data.anonymous;
     this.range = data.range;
     this.shape = data.shape;
     this.secondsActive = this.buildSecondsActiveArray();
@@ -41,6 +43,7 @@ module.exports = class Annotation extends PlayerUIComponent {
   get data() {
     return {
       id: this.id,
+      anonymous: this.anonymous,
       range: this.range,
       shape: this.shape,
       comments: this.commentList.data
@@ -124,12 +127,13 @@ module.exports = class Annotation extends PlayerUIComponent {
   }
 
   // Build a new annotation instance by passing in data for range, shape, comment, & plugin ref
-  static newFromData(range, shape, commentStr, plugin, id = null) {
-    const comment = Comment.dataObj(commentStr, plugin);
+  static newFromData(anonymous, range, shape, commentStr, plugin, id = null) {
+    const comment = Comment.dataObj(commentStr, plugin, anonymous);
     if (range) range = Utils.parseIntObj(range);
     if (shape) shape = Utils.parseIntObj(shape);
     const data = {
       id,
+      anonymous,
       range,
       shape,
       comments: [comment]

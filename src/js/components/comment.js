@@ -53,18 +53,23 @@ module.exports = class Comment extends PlayerUIComponent {
   }
 
   // Return a Comment obj given body content and plugin reference
-  static newFromData(body, commentList, plugin) {
-    const data = this.dataObj(body, plugin);
+  static newFromData(body, commentList, plugin, anonymous) {
+    const data = this.dataObj(body, plugin, anonymous);
     data.commentList = commentList;
     return new Comment(data, plugin.player);
   }
 
   // Return an object with plugin data, timestamp, unique id, and body content
-  static dataObj(body, plugin) {
-    return {
+  static dataObj(body, plugin, anonymous=false) {
+    let returnObj = {
       meta: { datetime: moment().toISOString(), ...plugin.meta },
       id: Utils.guid(),
       body
     };
+    if (anonymous) {
+      returnObj.meta.user_id = -1;
+      returnObj.meta.user_name = 'anonymous';
+    }
+    return returnObj;
   }
 };

@@ -83,7 +83,7 @@ function compile(watch, cb) {
 
 gulp.task('dev_webserver', () => {
   console.log(':::: > Test page at http://localhost:3004/test.html');
-  return gulp.src(['build', 'test', 'node_modules']).pipe(webserver({ port: 3004 }));
+  return gulp.src(['build', 'test', 'node_modules']).pipe(webserver({ port: 3004, host:'0.0.0.0' }));
 });
 
 gulp.task('sass', () => {

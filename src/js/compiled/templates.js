@@ -71,7 +71,7 @@ exports["templates"]["controls"] = Handlebars.template({"1":function(container,d
   return "<div class=\"vac-video-cover vac-control\">\n    <div class=\"vac-video-cover-canvas\">\n        <div class=\"vac-cursor-tool-tip vac-hidden\">Click and drag to select</div>\n    </div>\n</div>\n"
     + ((stack1 = lookupProperty(helpers,"if").call(alias1,(depth0 != null ? lookupProperty(depth0,"showControls") : depth0),{"name":"if","hash":{},"fn":container.program(6, data, 0),"inverse":container.noop,"data":data,"loc":{"start":{"line":21,"column":0},"end":{"line":33,"column":7}}})) != null ? stack1 : "")
     + "\n"
-    + ((stack1 = lookupProperty(helpers,"if").call(alias1,(depth0 != null ? lookupProperty(depth0,"writingComment") : depth0),{"name":"if","hash":{},"fn":container.program(9, data, 0),"inverse":container.noop,"data":data,"loc":{"start":{"line":35,"column":0},"end":{"line":50,"column":7}}})) != null ? stack1 : "");
+    + ((stack1 = lookupProperty(helpers,"if").call(alias1,(depth0 != null ? lookupProperty(depth0,"writingComment") : depth0),{"name":"if","hash":{},"fn":container.program(9, data, 0),"inverse":container.noop,"data":data,"loc":{"start":{"line":35,"column":0},"end":{"line":54,"column":7}}})) != null ? stack1 : "");
 },"6":function(container,depth0,helpers,partials,data) {
     var stack1, lookupProperty = container.lookupProperty || function(parent, propertyName) {
         if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
@@ -95,7 +95,7 @@ exports["templates"]["controls"] = Handlebars.template({"1":function(container,d
 
   return "<div class=\"vac-video-write-new-wrap vac-control\">\n    <div class=\"vac-video-write-new vac-is-annotation\">\n        <div>\n            <h5><b>New Annotation</b> @ "
     + container.escapeExpression(((helper = (helper = lookupProperty(helpers,"rangeStr") || (depth0 != null ? lookupProperty(depth0,"rangeStr") : depth0)) != null ? helper : container.hooks.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : (container.nullContext || {}),{"name":"rangeStr","hash":{},"data":data,"loc":{"start":{"line":39,"column":40},"end":{"line":39,"column":52}}}) : helper)))
-    + "</h5>\n            <div class=\"vac-comment-showbox\">\n                <textarea placeholder=\"Enter comment...\"></textarea>\n                <div>\n                    <button class=\"vac-button\">SAVE</button>\n                    <a>Cancel</a>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n";
+    + "</h5>\n            <div class=\"vac-comment-showbox\">\n                <textarea placeholder=\"Enter comment...\"></textarea>\n                <div>\n                    <button class=\"vac-button\">SAVE</button>\n                    <span>\n                        <input type=\"checkbox\" id=\"anonymous\" name=\"anonymous\" />\n                        <label for=\"anonymous\">ANONYMOUS</label>\n                    </span>\n                    <a>Cancel</a>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n";
 },"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1, alias1=depth0 != null ? depth0 : (container.nullContext || {}), lookupProperty = container.lookupProperty || function(parent, propertyName) {
         if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
@@ -106,7 +106,7 @@ exports["templates"]["controls"] = Handlebars.template({"1":function(container,d
 
   return ((stack1 = lookupProperty(helpers,"unless").call(alias1,(depth0 != null ? lookupProperty(depth0,"adding") : depth0),{"name":"unless","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data,"loc":{"start":{"line":1,"column":0},"end":{"line":13,"column":11}}})) != null ? stack1 : "")
     + "\n"
-    + ((stack1 = lookupProperty(helpers,"if").call(alias1,(depth0 != null ? lookupProperty(depth0,"adding") : depth0),{"name":"if","hash":{},"fn":container.program(5, data, 0),"inverse":container.noop,"data":data,"loc":{"start":{"line":15,"column":0},"end":{"line":51,"column":7}}})) != null ? stack1 : "");
+    + ((stack1 = lookupProperty(helpers,"if").call(alias1,(depth0 != null ? lookupProperty(depth0,"adding") : depth0),{"name":"if","hash":{},"fn":container.program(5, data, 0),"inverse":container.noop,"data":data,"loc":{"start":{"line":15,"column":0},"end":{"line":55,"column":7}}})) != null ? stack1 : "");
 },"useData":true});
 exports["templates"]["draggable_marker"] = Handlebars.template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
     var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3="function", alias4=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
