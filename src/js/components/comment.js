@@ -17,6 +17,8 @@ module.exports = class Comment extends PlayerUIComponent {
     this.body = data.body;
     this.timestamp = moment(data.meta.datetime).unix();
     this.timeSince = this.timeSince();
+    //this.canDelete = data.canDeletethis.plugin.options.canDelete;
+    this.canDelete = data.canDelete;
 
     this.$el = $(this.render());
   }
@@ -39,7 +41,8 @@ module.exports = class Comment extends PlayerUIComponent {
       id: this.id,
       body: this.body,
       meta: this.meta,
-      timeSince: this.timeSince
+      timeSince: this.timeSince,
+      canDelete: this.canDelete
     });
   }
 
@@ -60,11 +63,12 @@ module.exports = class Comment extends PlayerUIComponent {
   }
 
   // Return an object with plugin data, timestamp, unique id, and body content
-  static dataObj(body, plugin, anonymous=false) {
+  static dataObj(body, plugin, anonymous=false, canDelete=true) {
     let returnObj = {
       meta: { datetime: moment().toISOString(), ...plugin.meta },
       id: Utils.guid(),
-      body
+      body,
+      canDelete: canDelete
     };
     if (anonymous) {
       returnObj.meta.user_id = -1;

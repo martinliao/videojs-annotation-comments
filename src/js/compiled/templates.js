@@ -1,6 +1,8 @@
 var Handlebars = require("handlebars/runtime");
  exports["templates"] = exports["templates"] || {};
-exports["templates"]["comment"] = Handlebars.template({"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
+exports["templates"]["comment"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
+    return "      <span class=\"vac-delete-comment\">&nbsp;&nbsp;X</span>\n";
+},"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=container.hooks.helperMissing, alias3="function", alias4=container.escapeExpression, lookupProperty = container.lookupProperty || function(parent, propertyName) {
         if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
           return parent[propertyName];
@@ -14,8 +16,10 @@ exports["templates"]["comment"] = Handlebars.template({"compiler":[8,">= 4.3.0"]
     + alias4(container.lambda(((stack1 = (depth0 != null ? lookupProperty(depth0,"meta") : depth0)) != null ? lookupProperty(stack1,"user_name") : stack1), depth0))
     + "</div>\n    <div class=\"vac-timestamp\">"
     + alias4(((helper = (helper = lookupProperty(helpers,"timeSince") || (depth0 != null ? lookupProperty(depth0,"timeSince") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"timeSince","hash":{},"data":data,"loc":{"start":{"line":4,"column":31},"end":{"line":4,"column":44}}}) : helper)))
-    + "\n      <span class=\"vac-delete-comment\">&nbsp;&nbsp;X</span>\n    </div>\n  </div>\n  <div class=\"vac-comment-body\">\n    "
-    + alias4((lookupProperty(helpers,"breaklines")||(depth0 && lookupProperty(depth0,"breaklines"))||alias2).call(alias1,(depth0 != null ? lookupProperty(depth0,"body") : depth0),{"name":"breaklines","hash":{},"data":data,"loc":{"start":{"line":9,"column":4},"end":{"line":9,"column":23}}}))
+    + "\n"
+    + ((stack1 = lookupProperty(helpers,"if").call(alias1,(depth0 != null ? lookupProperty(depth0,"canDelete") : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data,"loc":{"start":{"line":5,"column":6},"end":{"line":7,"column":13}}})) != null ? stack1 : "")
+    + "    </div>\n  </div>\n  <div class=\"vac-comment-body\">\n    "
+    + alias4((lookupProperty(helpers,"breaklines")||(depth0 && lookupProperty(depth0,"breaklines"))||alias2).call(alias1,(depth0 != null ? lookupProperty(depth0,"body") : depth0),{"name":"breaklines","hash":{},"data":data,"loc":{"start":{"line":11,"column":4},"end":{"line":11,"column":23}}}))
     + "\n  </div>\n</div>\n";
 },"useData":true});
 exports["templates"]["comment_list"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data,blockParams) {
@@ -24,6 +28,8 @@ exports["templates"]["comment_list"] = Handlebars.template({"1":function(contain
   return "    "
     + ((stack1 = container.lambda(blockParams[0][0], depth0)) != null ? stack1 : "")
     + "\n";
+},"3":function(container,depth0,helpers,partials,data) {
+    return "<a class=\"vac-delete-annotation\">DELETE</a> |";
 },"compiler":[8,">= 4.3.0"],"main":function(container,depth0,helpers,partials,data,blockParams) {
     var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), lookupProperty = container.lookupProperty || function(parent, propertyName) {
         if (Object.prototype.hasOwnProperty.call(parent, propertyName)) {
@@ -36,7 +42,9 @@ exports["templates"]["comment_list"] = Handlebars.template({"1":function(contain
     + ((stack1 = lookupProperty(helpers,"each").call(alias1,(depth0 != null ? lookupProperty(depth0,"commentsHTML") : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 1, blockParams),"inverse":container.noop,"data":data,"blockParams":blockParams,"loc":{"start":{"line":3,"column":4},"end":{"line":5,"column":13}}})) != null ? stack1 : "")
     + "    <div class=\"vac-reply-btn vac-button\">ADD REPLY</div>\n    <div class=\"vac-add-new-shapebox\"></div>\n  </div>\n  <div class=\"vac-comments-control-bar\">\n    <div class=\"vac-range\"><b>@</b> "
     + container.escapeExpression(((helper = (helper = lookupProperty(helpers,"rangeStr") || (depth0 != null ? lookupProperty(depth0,"rangeStr") : depth0)) != null ? helper : container.hooks.helperMissing),(typeof helper === "function" ? helper.call(alias1,{"name":"rangeStr","hash":{},"data":data,"blockParams":blockParams,"loc":{"start":{"line":10,"column":36},"end":{"line":10,"column":48}}}) : helper)))
-    + "</div>\n    <div class=\"vac-control-buttons\">\n      <a class=\"vac-delete-annotation\">DELETE</a> | <a class=\"vac-close-comment-list\">CLOSE</a>\n    </div>\n  </div>\n</div>\n";
+    + "</div>\n    <div class=\"vac-control-buttons\">\n      "
+    + ((stack1 = lookupProperty(helpers,"if").call(alias1,(depth0 != null ? lookupProperty(depth0,"canDelete") : depth0),{"name":"if","hash":{},"fn":container.program(3, data, 0, blockParams),"inverse":container.noop,"data":data,"blockParams":blockParams,"loc":{"start":{"line":12,"column":6},"end":{"line":12,"column":75}}})) != null ? stack1 : "")
+    + " <a class=\"vac-close-comment-list\">CLOSE</a>\n    </div>\n  </div>\n</div>\n";
 },"useData":true,"useBlockParams":true});
 exports["templates"]["controls"] = Handlebars.template({"1":function(container,depth0,helpers,partials,data) {
     var stack1, lookupProperty = container.lookupProperty || function(parent, propertyName) {

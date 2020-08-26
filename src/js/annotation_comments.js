@@ -21,7 +21,8 @@ module.exports = videojs => {
     showFullScreen: true,
     showMarkerShapeAndTooltips: true,
     internalCommenting: true,
-    startInAnnotationMode: false
+    startInAnnotationMode: false,
+    canDelete: true
   });
 
   return class AnnotationComments extends Plugin {

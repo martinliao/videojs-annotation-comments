@@ -12,7 +12,7 @@ module.exports = class AnnotationState extends PlayerComponent {
     super(player);
     this.initAPI(this, 'AnnotationState');
     this.resetData();
-    this.bindEvents();
+    //this.bindEvents();
   }
 
   // sets _enabled and closes or opens annotation as needed
@@ -173,7 +173,8 @@ module.exports = class AnnotationState extends PlayerComponent {
     if (!this.plugin.active) this.plugin.toggleAnnotationMode();
     this.skipLiveCheck = skipLiveCheck;
     this.clearActive();
-    annotation.open(pause, previewOnly, forceSnapToStart);
+    //annotation.open(pause, previewOnly, forceSnapToStart);
+    annotation.open(false, false, false);
     this.activeAnnotation = annotation;
     this.lastVideoTime = this.activeAnnotation.range.start;
   }

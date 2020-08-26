@@ -15,6 +15,7 @@ module.exports = class Annotation extends PlayerUIComponent {
 debugger;
     this.id = data.id || this.componentId;
     this.anonymous = data.anonymous;
+    this.canDelete = typeof data.canDelete === 'undefined' ? null : data.canDelete;
     this.range = data.range;
     this.shape = data.shape;
     this.secondsActive = this.buildSecondsActiveArray();
@@ -62,7 +63,7 @@ debugger;
     const snapToStart =
       forceSnapToStart ||
       !Utils.isWithinRange(this.range.start, this.range.end, Math.floor(this.currentTime));
-
+console.log("snapToStart: ", snapToStart);
     const showTooltip = previewOnly && this.plugin.options.showMarkerShapeAndTooltips;
     this.marker.setActive(showTooltip);
     if (!previewOnly && this.plugin.options.showCommentList) {
@@ -80,7 +81,7 @@ debugger;
     }
 
     if (withPause) this.player.pause();
-    if (snapToStart) this.currentTime = this.range.start;
+    //if (snapToStart) this.currentTime = this.range.start;
 
     this.plugin.fire('annotationOpened', {
       annotation: this.data,
@@ -128,7 +129,8 @@ debugger;
 
   // Build a new annotation instance by passing in data for range, shape, comment, & plugin ref
   static newFromData(anonymous, range, shape, commentStr, plugin, id = null) {
-    const comment = Comment.dataObj(commentStr, plugin, anonymous);
+debugger;
+    const comment = Comment.dataObj(commentStr, plugin, anonymous, false);
     if (range) range = Utils.parseIntObj(range);
     if (shape) shape = Utils.parseIntObj(shape);
     const data = {
@@ -136,7 +138,8 @@ debugger;
       anonymous,
       range,
       shape,
-      comments: [comment]
+      comments: [comment],
+      canDelete: true
     };
     return new Annotation(data, plugin.player);
   }

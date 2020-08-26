@@ -14,8 +14,21 @@ module.exports = class CommentList extends PlayerUIComponent {
     super(player);
 
     this.annotation = data.annotation;
+    const anonymous = this.annotation.anonymous;
+    this.canDelete = data.annotation.canDelete || this.plugin.options.canDelete;
+    console.log("puglin-canDelte: ", this.canDelete);
+    let _topComment = true;
     this.comments = data.comments.map(commentData => {
       commentData.commentList = this;
+      if (anonymous) { 
+        //commentData.anonymous = true; 
+        commentData.meta.user_name='anonymous'; 
+      }
+      commentData.canDelete = this.canDelete;
+      if( _topComment){
+         commentData.canDelete = false;
+        _topComment = false;
+      }
       return new Comment(commentData, player);
     });
     this.sortComments();
@@ -64,7 +77,8 @@ module.exports = class CommentList extends PlayerUIComponent {
     this.$el = $(
       this.renderTemplate(commentListTemplateName, {
         commentsHTML: this.comments.map(c => c.HTML),
-        rangeStr: Utils.humanTime(this.annotation.range)
+        rangeStr: Utils.humanTime(this.annotation.range),
+        canDelete: this.canDelete
       })
     );
 
@@ -139,6 +153,7 @@ module.exports = class CommentList extends PlayerUIComponent {
       const i = this.comments.indexOf(comment);
       this.comments.splice(i, 1);
       this.reRender();
+      this.plugin.fire('commentDeleted', { commentId });
     }
 
     this.plugin.annotationState.stateChanged();
